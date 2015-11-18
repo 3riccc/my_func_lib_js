@@ -46,7 +46,6 @@ function copyObject (obj){
  * 轮播图应有一个div,一个ul,和数个li>img[src]组成
  * 其css如下，outer是外层div
 .outer{
-	border:1px solid black;
 	height: 100px;
 	width: 100px;
 	overflow: hidden;
@@ -74,13 +73,15 @@ function copyObject (obj){
  * @param  {[string]} ul   ul的className
  * @param  {[number]} num    轮播图数量
  * @param  {[number]} time  每张图片播放时间
+ * @param  {[number]} stayTime  每张图片停留时间
  */
-function circlePic(ul,num,time){
+function circlePic(ul,num,time,stayTime){
 	$(ul).animate({"left":"0px"},0);
 	for(var i=0;i<num-1;i++){
+		$(ul).animate({"left":"-=0px"},stayTime);
 		$(ul).animate({"left":"-=100%"},time);
 	}
 }
 // setInterval(function(){
-// 	circlePic("ul",5,1000);
+// 	circlePic(".ul",5,2000,1000);
 // })
